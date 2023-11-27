@@ -1,4 +1,4 @@
-- A server is a computer that is only accessed by a network and it returns an operating system.
+- A server can be physical or virtual it iss only accessed by a network and it runs an Operating System.
 - DNS(Domain Name Server) is a technology that translates texted-based domain name to a numerical-domain name which is known as the IP address
 - The type of DNS record www is in www.foobar.com is called the CName(Canonical Name).
 - A web server is a software that delivers web pages, it handles the HTTP protocol
