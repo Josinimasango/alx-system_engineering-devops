@@ -1,7 +1,27 @@
 #!/usr/bin/env bash
-# installing the nginx server
-apt-get update
-apt-get -y install nginx
-ufw allow 'Nginx HTTP'
-echo "Hello World!" > /var/www/html/index.html
-service nginx start
+# installs Nginx
+
+echo -e "Updating and installing Nginx.\n"
+sudo apt-get update -y -qq && \
+	 sudo apt-get install nginx -y
+
+echo -e "\nSetting up some minor stuff.\n"
+
+# start the nginx service
+sudo service nginx start
+
+# permission nginx on firewall
+sudo ufw allow 'Nginx HTTP'
+
+# easy use for the user to edit
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+# default index backup
+cp /var/www/html/index.nginx.html /var/www/html/index.nginx.html.bckp
+
+# Creation of a new index
+echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx.html
+
+# Nginx restart
+sudo service nginx restart
